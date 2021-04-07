@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Part1_1</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//Width and height
+			var w = 500;
+			var h = 500;
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+
+
+			svg.append('line')
+				.attr('x1', 20)
+				.attr('x2', 33)
+				.attr('y1', 100)
+				.attr('y2', 100)
+				.attr('stroke', 'grey')
+				.attr('stroke-width', 2);
+
+			svg.append('line')
+				.attr('x1', 20)
+				.attr('x2', 43)
+				.attr('y1', 110)
+				.attr('y2', 110)
+				.attr('stroke', 'grey')
+				.attr('stroke-width', 2);
+
+			svg.append('circle')
+				.attr('cx', 20)
+				.attr('cy', 30)
+				.attr('r', 13)
+				.attr('fill', 'red');
+
+			svg.append('circle')
+				.attr('cx', 100)
+				.attr('cy', 30)
+				.attr('r', 23)
+				.attr('fill', 'red');
+
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Part1_2</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//Width and height
+			var w = 500;
+			var h = 500;
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+
+
+			svg.append('rect')
+				.attr('x', 50)
+				.attr('y', 40)
+				.attr('height', 13)
+				.attr('width', 13)
+				.attr('fill', 'blue');
+
+			svg.append('rect')
+				.attr('x', 100)
+				.attr('y', 40)
+				.attr('height', 23)
+				.attr('width', 23)
+				.attr('fill', 'blue');
+
+            svg.append('polygon')
+                .attr('points', '50,100 63,100 56.5,113')
+                .attr('fill', 'green')
+
+            svg.append('polygon')
+                .attr('points', '100,100 123,100 111.5,123')
+                .attr('fill', 'green')
+
+
+		</script>
+	</body>
+</html>

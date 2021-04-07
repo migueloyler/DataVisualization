@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Part1_4</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+        <svg width="960" height="500"></svg>
+		<script type="text/javascript">
+			
+			
+            const xValue = d => d.xVal;
+            const yValue = d => d.yVal;
+            const margin = { left: 30, right: 20, top: 20, bottom: 20 };
+
+            const svg = d3.select('svg');
+            const width = svg.attr('width');
+            const height = svg.attr('height');
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left}, ${margin.top})`);
+            const xAxisG = g.append('g')
+                .attr('transform', `translate(0, ${margin.top})`);
+            const yAxisG = g.append('g')
+                .attr('transform', `translate(${innerWidth}, ${margin.right})`);
+
+            const xScale = d3.scaleLinear();
+            const yScale = d3.scaleLog();
+
+            const xAxis = d3.axisTop().scale(xScale);
+            const yAxis = d3.axisRight().scale(yScale);
+
+            const row = d => {
+                d.xVal = +d.xVal;
+                d.yVal = +d.yVal;
+                return d;
+            };
+        
+            d3.csv('data.csv', row)
+            .then(data => {
+            xScale
+                .domain([-475, 0])
+                .range([0, innerWidth]);
+
+            yScale
+                .domain([0,innerHeight])
+                .range([innerHeight, 0]);
+
+            g.selectAll('circle').data(data)
+                .enter().append('circle')
+                .attr('cx', d => xScale(xValue(d)))
+                .attr('cy', d => yScale(yValue(d)))
+                .attr('r', 5);
+
+            xAxisG.call(xAxis);
+            yAxisG.call(yAxis);
+            });
+            
+    
+
+
+		</script>
+	</body>
+</html>

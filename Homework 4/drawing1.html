@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Putting the SVG's width and height into variables</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//Width and height
+			var w = 500;
+			var h = 500;
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.append('circle')
+				.attr('cx', 20)
+				.attr('cy', 20)
+				.attr('r', 10)
+				.attr('fill', 'red');
+
+			svg.append('rect')
+				.attr('x', 100)
+				.attr('y', 10)
+				.attr('height', 20)
+				.attr('width', 20)
+				.attr('fill', 'blue');
+
+			svg.append('ellipse')
+				.attr('cx', 20)
+				.attr('cy', 100)
+				.attr('rx', 20)
+				.attr('ry', 10)
+				.attr('fill', 'green');
+
+			svg.append('line')
+				.attr('x1', 100)
+				.attr('x2', 120)
+				.attr('y1', 90)
+				.attr('y2', 110)
+				.attr('stroke', 'grey')
+				.attr('stroke-width', 2);
+
+
+
+		</script>
+	</body>
+</html>
