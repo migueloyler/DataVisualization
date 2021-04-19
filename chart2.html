@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Homework 5: Chart 2 Bar Chart</title>
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+	</head>
+	<body>
+	</svg>
+		<script>
+			
+			//Width and height
+			var w = 500;
+			var h = 100;
+			var barPadding = 1;
+			
+			//Left padding for axis
+			var padding = 20;	
+			
+			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+			var yScale = d3.scaleLinear()
+							.domain([25, 0])
+							.range([h-padding, 0]);
+
+			var yAxis = d3.axisLeft().scale(yScale);
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w + padding)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+				 .data(dataset)
+				 .enter()
+				 .append("rect")
+				 .attr("x", function(d, i) {
+				 		return (i * (w / dataset.length)) + padding;
+				 })
+				 .attr("y", function(d) {
+				 		return 0;
+				 })
+				 .attr("width", w / dataset.length - barPadding)
+				 .attr("height", function(d) {
+				 		return yScale(d);
+				 })
+				 .attr("fill", function(d) {
+					return "rgb(0, 0, " + Math.round(d * 10) + ")";
+				 });
+
+			svg.selectAll("text")
+				 .data(dataset)
+				 .enter()
+				 .append("text")
+				 .text(function(d) {
+				 		return d;
+				 })
+				 .attr("text-anchor", "middle")
+				 .attr("x", function(d, i) {
+				 		return (i * (w / dataset.length) + (w / dataset.length - barPadding) / 2) + padding;
+				 })
+				 .attr("y", function(d) {
+				 		return yScale(d) - 2;
+				 })
+				 .attr("font-family", "sans-serif")
+				 .attr("font-size", "11px")
+				 .attr("fill", "white");
+
+			svg.append('g')
+				.attr('class', 'axis')
+				.attr('transform', 'translate(' + (padding) + ',' + (0) + ')')
+				.call(yAxis);
+			
+		</script>
+	</body>
+</html>
